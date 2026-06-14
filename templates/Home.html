@@ -1,0 +1,87 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+
+        <div class="logo">
+            MarketPlace
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'cart' %}">Cart</a>
+            <a href="/">login</a>
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <h1>Buy & Sell Easily</h1>
+
+        <p>
+            Discover thousands of products from different sellers.
+        </p>
+
+    </section>
+
+    <h2 class="section-title">
+        Featured Products
+    </h2>
+
+    <section class="products">
+
+        {% for product in products %}
+
+        <div class="card">
+
+            <img src="{{ product.image.url }}" alt="product">
+
+            <div class="card-body">
+
+                <h3 class="card-title">
+                    {{ product.name }}
+                </h3>
+
+                <div class="price">
+                    {{ product.price }} DA
+                </div>
+
+                <p class="description">
+                    {{ product.description|truncatechars:80 }}
+                </p>
+
+                <button class="buy-btn" onclick="add_to_cart('{{ product.id }}')">
+                    Add To Cart
+                </button>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <h3>No Products Found</h3>
+
+        {% endfor %}
+
+    </section>
+
+    <footer>
+        <p>© 2026 Marketplace - All Rights Reserved</p>
+    </footer>
+ <script src="{% static 'app.js' %}"></script>  
+</body>
+</html>    

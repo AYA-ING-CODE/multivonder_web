@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Register</title>
+
+    <!-- ربط ملف CSS -->
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+
+    <!-- خط جميل -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left">
+        <h2>Welcome 👋</h2>
+        <p>Login or create an account to continue</p>
+    </div>
+
+    <div class="right">
+
+        <h2 id="title">Login</h2>
+       <form id="csrf-form">
+          {% csrf_token %}
+          <input type="text" placeholder="usernam" id="usernam">
+          <input type="password" placeholder="Password" id="password">
+        </form>
+        
+        <button onclick="login()">Login</button>
+        <button onclick="register()">Create Account</button> 
+        
+       
+
+    </div>
+
+</div>
+<script src="{% static 'app.js' %}"></script>        
+</body>
+</html>

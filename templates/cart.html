@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <link rel="stylesheet" href="{% static 'cart.css' %}">
+</head>
+<body>
+{% include "navbar.html" %}
+<form id="csrf-form">
+  {% csrf_token %}   
+
+  <div id="formModal" class="modal hidden">
+
+       <div class="modal-content">
+
+          <h3>Update Quantity</h3>
+
+         <input type="number" id="quantity" min="1" placeholder="Quantity">
+
+
+         <button type="button" onclick="updateQuantity()">
+            Save
+         </button>
+
+         <button type="button"  onclick="closeModal()">
+            Close
+         </button>
+
+        </div>
+
+    </div>
+
+</form> 
+
+<div class="cart-container">
+
+    <h1>Your Cart</h1>
+
+    <div class="cart-items">
+
+        {% for item in items %}
+
+        <div class="cart-item">
+
+            <img src="{{ item.product.image.url }}" alt="product">
+
+            <div class="item-info">
+                <h3>{{ item.product.name }}</h3>
+                <p>${{ item.product.price }}</p>
+            </div>
+
+            <div class="quantity">
+                Qty : {{ item.quantity }}
+            </div>
+
+            <div class="total-price">
+                ${{ item.product.price }}
+            </div>
+
+            <button class="remove-btn" onclick="remove_from_cart('{{item.id}}')">
+                Remove
+            </button>
+            <button onclick="openModal('{{ item.id }}')">
+                Update Quantity
+            </button>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-cart">
+            Your cart is empty.
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<div class="cart-summary">
+
+    <h2>Total: $ {{ total }}</h2>
+
+    <button  onclick="creat_order()" class="checkout-btn">
+        Buying
+    </button>
+
+</div>
+<script src="{% static 'cart.js' %}"></script>
+</body>
+</html>
+
+  
+

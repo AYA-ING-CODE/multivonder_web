@@ -1,0 +1,173 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#4f46e5,#06b6d4);
+}
+
+.container{
+    width:800px;
+    height:500px;
+    background:white;
+    border-radius:20px;
+    display:flex;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* left side */
+.left{
+    width:50%;
+    background:#4f46e5;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.left h2{
+    font-size:28px;
+}
+
+.left p{
+    margin-top:10px;
+    font-size:14px;
+    text-align:center;
+}
+
+/* right side */
+.right{
+    width:50%;
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+input{
+    margin:10px 0;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+button{
+    margin-top:10px;
+    padding:12px;
+    border:none;
+    background:#4f46e5;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#3730a3;
+}
+
+.switch{
+    margin-top:10px;
+    font-size:12px;
+    cursor:pointer;
+    color:#4f46e5;
+}
+
+
+*/--------------profile_style --------*/
+
+
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.top-bar {
+  background: black;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.products-container{
+    width: 90%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+}
+
+.product-card{
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-card img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card h3{
+    margin-top: 10px;
+}
+
+.product-card span{
+    background: black;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}

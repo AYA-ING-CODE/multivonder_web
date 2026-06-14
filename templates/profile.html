@@ -1,0 +1,79 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="top-bar">
+  <h2>My Shop</h2>
+
+  <button id="open_addFormBtn">+ Add Product</button>
+</div>
+
+<!-- FORM MODAL -->
+<form id="csrf-form">
+  {% csrf_token %}
+  <div id="formModal" class="modal hidden">
+
+    <div class="modal-content">
+      <h3>Add Product</h3>
+
+      <input type="text" id="name" placeholder="Name">
+      <textarea id="description" placeholder="Description"></textarea>
+
+      <select id="category">
+        <option value="beauty">Beauty</option>
+        <option value="men">Men</option>
+        <option value="all">All</option>
+      </select>
+
+      <input type="number" id="price" placeholder="Price">
+      <input type="file" id="image">
+
+      <button  type="button" id="submitBtn" onclick="handleSubmit()">Submit</button>
+      <button type="button" onclick="closeForm()">Close</button>
+    
+    </div>
+ 
+
+  </div>
+</form> 
+<!-- to show products -->
+<div class="products-container">
+
+  {% for product in products %}
+
+    <div class="product-card">
+
+      <img src="{{ product.image.url }}" alt="product image">
+
+      <h3>{{ product.name }}</h3>
+
+      <p>{{ product.description }}</p>
+
+      <span>{{ product.category }}</span>
+
+      <h4>{{ product.price }} $</h4>
+      <button class="delete-btn"   onclick="deleteProduct('{{ product.id  }}')">Delete</button>
+      <button onclick="open_modifyFormBtn( 
+        '{{ product.id }}', 
+        '{{ product.name }}',
+        '{{ product.description }}',
+        '{{ product.category }}',
+        '{{ product.price }}')"
+        > Modify
+      </button>
+   
+    </div>
+       
+  {% endfor %}
+
+</div>
+<!----------------------------------------------------------------------------------------->
+<script src="{% static 'app.js' %}"></script>     
+</body>
+</html>
